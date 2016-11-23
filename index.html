@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mother Nature's Thermometer</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="container">
+            <header>
+                <h2>Predict the Temperature <span class = "break"> with Crickets <span></h2>
+                <h4>Count the cricket chirps you hear in 14 seconds</h4>
+            </header>
+
+            <form>
+                <input type="number" id="chirps" value="" min="1" step="1" placeholder="enter a number" onclick="resetBorder();">
+                <div class="radioButtons">
+                    <input type="radio" id="F" name="radioAnswer" checked>
+                    <label for="F">&deg;F</label>
+                    <input type="radio" id="C" name="radioAnswer">
+                    <label for="C">&deg;C</label>
+                </div>
+                <button type="button" onclick="submitButton();">Submit</button>
+                <p id="answer"></p>
+            </form>
+
+        </div>
+        <!-- end of container -->
+    </div>
+    <!-- end of wrap -->
+    <footer>
+    </footer>
+
+    <script src="javascript.js"></script>
+</body>
+
+</html>

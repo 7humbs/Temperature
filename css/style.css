@@ -1,0 +1,143 @@
+/*******Containers*******/
+
+.container {
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  position: relative;
+  top: 15vh;
+  margin: 0 auto;
+}
+
+
+/*******Page Elements*******/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: url("https://s21.postimg.org/iuz89b1p3/wildnerness.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+html, body {
+  margin-top: -10px;
+  color: white;
+}
+
+form {
+  margin-bottom: 1em;
+}
+
+input[type="number"]:focus {
+  border-color: inherit;
+}
+
+button {
+  display: block;
+  margin: 1.5em auto;
+  border-style: none;
+  background-color: #add8e6;
+  padding: .7em;
+  border-radius: 15%;
+  opacity: 1;
+}
+
+
+
+
+/*******Class Selectors*******/
+
+.break {
+  line-break: strict;
+}
+
+.radioButtons {
+  display: block;
+  margin-left: 1em;
+  padding-top: 1em;
+}
+
+.radioButtons label:first-of-type {
+  padding-right: .9em;
+}
+
+
+/*Used in Javascript*/
+
+.redBorder {
+  background-color: rgba(230, 0, 0, .8);
+  transition: .4s ease-in;
+}
+
+
+
+/*******ID Selectors*******/
+
+#chirps {
+  border: none;
+  text-align: center;
+  padding: .4em;
+  border-left: 2px black solid;
+  transition: .4s ease-in;
+  outline: none;
+}
+
+#answer {
+  display: inline-block;
+  margin-top: .5em;
+  margin-bottom: 2em;
+  font-size: 1.2em;
+}
+
+
+/*******Pseduo Selectors*******/
+
+button:focus {
+  outline: 0;
+}
+
+button:active {
+  opacity: 0.75;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #000;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/*******Media Queries******/
+
+
+/* Small Devices, Tablets and above */
+
+@media only screen and (min-width: 445px) {
+  .radioButtons {
+    display: inline-block;
+  }
+
+  .break {
+    line-break: loose;
+  }
+}
+
+@media only screen and (min-width: 779px) {
+  .container {
+    top: 30vh;
+  }
+
+  .wrap {
+  height: calc(100vh - 3em);
+}
+
+  footer {
+  height: 3em;
+  background-color: rgba(204, 204, 204, .3);;
+}
+
+}
+
+
+/*******End Media Queries******/
