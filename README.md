@@ -17,4 +17,4 @@ Positioning was interesting - I'm happy with the outcome of my content and its r
 
 I have other ideas I want to implement with this project, such as taking the viewer's weather from their personal location and converting it to cricket chirps - so perhaps some API actioin going on. I am going to move on to different projects so I can practice what I'm learning via Treehouse. Plus, with being new to git and github, it will give me an excuse to commit!
 
-Don't feel like cloning to view my project? That's ok - I totally understand! You can view and try it out over on my [codepen](codepen.io/7humbs/full/rWVwpJ/).
+Don't feel like cloning to view my project? That's ok - I totally understand! You can view and try it out over on my [codepen](http://codepen.io/7humbs/full/rWVwpJ/).
