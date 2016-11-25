@@ -1,16 +1,18 @@
 'use strict';
 
-//highlights the border red for invalid()
-//Set to global for resetBorder()
-var inputBorder = document.getElementById("chirps");
 
-function submitButton() {
+//Creates iffe to hide globals and organises code
+var run = (function(){
+  //highlights the border red for invalid()
+  //Set to global for resetBorder()
+  var inputBorder = document.getElementById("chirps");
   //  Get number string from input field in html document
   var cricketStr = document.getElementById("chirps").value;
   // for invalid() and calculation()
   var submit = true;
   //answer message displays in calculation() or invalid()
   var answer = document.getElementById("answer");
+
 
   function invalid() {
 
@@ -23,7 +25,9 @@ function submitButton() {
       return submit;
     }
   }
-  //Converts cricket chirps to Fahrenheit or Celcius based off radio butten
+
+
+    //Converts cricket chirps to Fahrenheit or Celcius based off radio butten
   function calculation() {
     //Radio button for Fahrenheit
     var radioF = document.getElementById("F");
@@ -47,16 +51,33 @@ function submitButton() {
       answer.innerHTML = message;
     }
   }
-  //  Assigns an empty value to clear the input field after user clicks button
+
+    //  Assigns an empty value to clear the input field after user clicks button
   function clearValueField() {
     document.getElementById("chirps").value = "";
   }
 
-  clearValueField();
-  invalid();
-  calculation();
-}
+  function resetBorder() {
+    inputBorder.className = "";
+  }
 
-function resetBorder() {
-  inputBorder.className = "";
-}
+  function submitButton(){
+    clearValueField();
+    invalid();
+    calculation();
+  }
+
+  //The IFFE returns the object to latter acess 
+  return {
+    submit: submitButton,
+    resetBorder:resetBorder
+      
+  }
+
+ 
+})();
+
+
+
+
+
