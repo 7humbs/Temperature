@@ -10,6 +10,11 @@ $("#enterKeyboard").submit(function(event) {
     submitButton();
 });
 
+$("#enterKeyboard").keydown(function() {
+    resetBorder();
+});
+
+
 function submitButton() {
     //  Get number string from input field in html document
     var cricketStr = document.getElementById("chirps").value;
