@@ -10,10 +10,10 @@ $("#enterKeyboard").submit(function(event) {
     submitButton();
 });
 
+//Removes .redBorder when users press keys in input field
 $("#enterKeyboard").keydown(function() {
     resetBorder();
 });
-
 
 function submitButton() {
     //  Get number string from input field in html document
@@ -68,6 +68,7 @@ function submitButton() {
     calculation();
 }
 
+//Called in HTML for onclick and in jquery for keyboard "enter"
 function resetBorder() {
     inputBorder.className = "";
 }
