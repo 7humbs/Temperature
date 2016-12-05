@@ -6,14 +6,14 @@ $("#enterKeyboard").submit(function(event) {
     submitButton();
 });
 
-//Triggers event when user submits button from clicking mouse
-$("#submitButton").click(function() {
-    submitButton();
-});
-
 //Removes .redBorder if invalid from previous input when user presses keys on keyboard in input field
 $("#enterKeyboard").keydown(function() {
     resetBorder();
+});
+
+//Triggers event when user submits button from clicking mouse
+$("#submitButton").click(function() {
+    submitButton();
 });
 
 //Removes .redBorder if invalid from previous input when user clicks in input field
@@ -24,23 +24,23 @@ $("#chirps").click(function() {
 //Grabs input value from user, declares variables for access to functions called in it
 function submitButton() {
     //  Get string from input field in html doc
-    var cricketInput = document.getElementById("chirps").value;
+    var cricketInput = $("#chirps").val();
     //answer message displays in calculation() or invalid()
-    var answer = document.getElementById("answer");
+    var answer = $("#answer");
     //Clears input field
-    document.getElementById("chirps").value = "";
+    $("#chirps").val("");
     //Passing in cricketInput and calculation() parameters to call invalid function to first check if input is invalid, and if it is not, to perform the calculation()
     invalid(cricketInput, calculation);
 }
 
-//1st parameter is cricketInput value, renamed since it is a string from inital input submitted, second is calculation() passed as callback function
+//1st parameter is cricketInput value, renamed since it is a string from initial input submitted, second is calculation() passed as callback function
 function invalid(cricketStr, convertChirps) {
     //Checks if string is < 1 or a float as this is invalid data
     if (cricketStr < 1 || cricketStr % 1 !== 0) {
         //highlights the input field red to signal invalid input
         $("#chirps").addClass("redBorder");
         //Answer is an empty string, this also resets the answer from previous answers if they were valid
-        answer.innerHTML = "";
+        $(answer).html("");
         //if the cricketStr is valid input - ie >= 1 and not a float, calculation function will execute to convert chirps to temp...
     } else {
         //Checks if convertChirps is a function, and will execute if so
@@ -53,7 +53,7 @@ function invalid(cricketStr, convertChirps) {
 //Converts cricket chirps to Fahrenheit or Celcius based off checked radio button. The parameter being passed is cricketStr from callback
 function calculation(convertCricketStr) {
     //Radio button for Fahrenheit
-    var radioF = document.getElementById("F");
+    var radioF = $("#F");
     //  Turns string into an integer for calculations
     var cricketNum = parseInt(convertCricketStr);
     // Calculation to turn chirps into degrees Fahrenheit
@@ -66,12 +66,12 @@ function calculation(convertCricketStr) {
     if (radioF.checked === true) {
         //Output of Fahrenheit calculation
         message += fTemp + "&deg;F";
-        answer.innerHTML = message;
+        $(answer).html(message);
         //checks if Fahrenheit is NOT checked (thus, it is Celsius)
     } else if (radioF.checked !== true) {
         //output of Celsius calculation
         message += cTempRounded + "&deg;C";;
-        answer.innerHTML = message;
+        $(answer).html(message);
     }
 }
 
