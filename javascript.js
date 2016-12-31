@@ -11,25 +11,15 @@ $("#enterKeyboard").on({
     submit: function() {
         event.preventDefault();
         submitButton();
-    },
-    //Removes .redBorder if invalid from previous input when user presses keys
-    keydown: function() {
-        if ($("#chirps").hasClass("redBorder") === true) {
-            resetBorder();
-        }
     }
 });
+
+//Removes .redBorder if invalid from previous input when user clicks or presses keys  in input field
+$("#chirps").on("click keydown", resetBorder);
 
 //Triggers event when user submits button from clicking mouse
 $("#submitButton").click(function() {
     submitButton();
-});
-
-//Removes .redBorder if invalid from previous input when user clicks in input field
-$("#chirps").on("click", function() {
-    if ($("#chirps").hasClass("redBorder") === true) {
-        resetBorder();
-    }
 });
 
 //Grabs input value from user, declares variables for access to functions called in it
@@ -81,7 +71,9 @@ function calculation(convertCricketNumb) {
     }
 }
 
-//Removes .redBorder and is called in event handlers
+// Removes .redBorder and is called in event handlers
 function resetBorder() {
-    $("#chirps").removeClass("redBorder");
+    if ($("#chirps").hasClass("redBorder")) {
+        $("#chirps").removeClass("redBorder");
+    }
 }
