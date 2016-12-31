@@ -1,14 +1,23 @@
 'use strict';
 
-//Triggers event when user submits button from hitting enter on keyboard
-$("#enterKeyboard").submit(function(event) {
-    event.preventDefault();
-    submitButton();
-});
+//Radio button for Fahrenheit
+var radioF = $("#F");
+$(radioF).attr("checked", true);
+//answer message displays in calculation() or invalid()
+var answer = $("#answer");
 
-//Removes .redBorder if invalid from previous input when user presses keys on keyboard in input field
-$("#enterKeyboard").keydown(function() {
-    resetBorder();
+$("#enterKeyboard").on({
+    //Triggers event when user submits button from hitting enter on keyboard
+    submit: function() {
+        event.preventDefault();
+        submitButton();
+    },
+    //Removes .redBorder if invalid from previous input when user presses keys
+    keydown: function() {
+        if ($("#chirps").hasClass("redBorder") === true) {
+            resetBorder();
+        }
+    }
 });
 
 //Triggers event when user submits button from clicking mouse
@@ -17,26 +26,26 @@ $("#submitButton").click(function() {
 });
 
 //Removes .redBorder if invalid from previous input when user clicks in input field
-$("#chirps").click(function() {
-    resetBorder();
+$("#chirps").on("click", function() {
+    if ($("#chirps").hasClass("redBorder") === true) {
+        resetBorder();
+    }
 });
 
 //Grabs input value from user, declares variables for access to functions called in it
 function submitButton() {
-    //  Get string from input field in html doc
-    var cricketInput = $("#chirps").val();
-    //answer message displays in calculation() or invalid()
-    var answer = $("#answer");
+    //  Get string from input field, converts to number
+    var cricketInput = +$("#chirps").val();
     //Clears input field
     $("#chirps").val("");
     //Passing in cricketInput and calculation() parameters to call invalid function to first check if input is invalid, and if it is not, to perform the calculation()
     invalid(cricketInput, calculation);
 }
 
-//1st parameter is cricketInput value, renamed since it is a string from initial input submitted, second is calculation() passed as callback function
-function invalid(cricketStr, convertChirps) {
-    //Checks if string is < 1 or a float as this is invalid data
-    if (cricketStr < 1 || cricketStr % 1 !== 0) {
+//1st argument is cricketInput value, second is calculation() passed as callback function
+function invalid(cricketNumb, convertChirps) {
+    //Checks if number is < 1 or a float as this is invalid data
+    if (cricketNumb < 1 || cricketNumb % 1 !== 0) {
         //highlights the input field red to signal invalid input
         $("#chirps").addClass("redBorder");
         //Answer is an empty string, this also resets the answer from previous answers if they were valid
@@ -46,29 +55,26 @@ function invalid(cricketStr, convertChirps) {
         //Checks if convertChirps is a function, and will execute if so
         if (typeof convertChirps === "function") {
             //cricketInput is passed as an arugment named cricketStr, and the calculation function will execute
-            convertChirps(cricketStr);
+            convertChirps(cricketNumb);
         }
     }
 }
-//Converts cricket chirps to Fahrenheit or Celcius based off checked radio button. The parameter being passed is cricketStr from callback
-function calculation(convertCricketStr) {
-    //Radio button for Fahrenheit
-    var radioF = $("#F");
-    //  Turns string into an integer for calculations
-    var cricketNum = parseInt(convertCricketStr);
+//Converts cricket chirps to Fahrenheit or Celcius based off checked radio button. The parameter being passed is cricketNumb from callback
+function calculation(convertCricketNumb) {
     // Calculation to turn chirps into degrees Fahrenheit
-    var fTemp = cricketNum + 40;
-    //Coversion of F to C, and rounded to the nearest 10th
+    var fTemp = convertCricketNumb + 40;
+    //Conversion of F to C, rounded to the nearest 10th
     var cTempRounded = Math.round(((fTemp - 32) * .5556) * 10) / 10;
     //output variable text for calculation
     var message = "The crickets predict the temperature is about ";
     //checks if Fahrenheit is checked -  the radio button's default (from html)
-    if (radioF.checked === true) {
+    if (radioF.is(':checked')) {
         //Output of Fahrenheit calculation
         message += fTemp + "&deg;F";
         $(answer).html(message);
-        //checks if Fahrenheit is NOT checked (thus, it is Celsius)
-    } else if (radioF.checked !== true) {
+
+        //Celcius calculation
+    } else {
         //output of Celsius calculation
         message += cTempRounded + "&deg;C";;
         $(answer).html(message);
