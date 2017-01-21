@@ -1,15 +1,15 @@
 'use strict';
 //Input id
-var $chirps = $("#chirps");
+const $chirps = $("#chirps");
 //Radio button for Fahrenheit
-var $radioF = $("#F");
+const $radioF = $("#F");
 $($radioF).attr("checked", true);
 
 //$answer message displays in calculation() or invalid()
-var $answer = $("#answer");
+const $answer = $("#answer");
 
 //User can submit from keyboard by pressing enter or clicking the submit button
-$("#cricketForm").submit(function(event) {
+$("#cricketForm").submit(function (event) {
     event.preventDefault();
     $("#submitButton").click();
     submitButton();
@@ -21,7 +21,7 @@ $chirps.on("click keydown", resetBorder);
 //Grabs input value from user, declares variables for access to functions called in it
 function submitButton() {
     //  Get string from input field, converts to number
-    var $cricketInput = +$chirps.val();
+    const $cricketInput = +$chirps.val();
     //Clears input field
     $chirps.val("");
     //Passing in $cricketInput and calculation() aeguments to call invalid function to first check if input is invalid, and if it is not, to perform the calculation()
@@ -48,21 +48,21 @@ function invalid(cricketNumb, convertChirps) {
 //Converts cricket chirps to Fahrenheit or Celcius based off checked radio button. The parameter being passed is cricketNumb from callback
 function calculation(convertCricketNumb) {
     // Calculation to turn chirps into degrees Fahrenheit
-    var fTemp = convertCricketNumb + 40;
+    const $fTemp = convertCricketNumb + 40;
     //Conversion of F to C, rounded to the nearest 10th
-    var cTempRounded = Math.round(((fTemp - 32) * .5556) * 10) / 10;
+    const $cTempRounded = Math.round((($fTemp - 32) * .5556) * 10) / 10;
     //output variable text for calculation
-    var message = "The crickets predict the temperature is about ";
+    let message = "The crickets predict the temperature is about ";
     //checks if Fahrenheit is checked -  the radio button's default
     if ($radioF.is(':checked')) {
         //Output of Fahrenheit calculation
-        message += fTemp + "&deg;F";
+        message += $fTemp + "&deg;F";
         $($answer).html(message);
 
         //Celcius calculation
     } else {
         //output of Celsius calculation
-        message += cTempRounded + "&deg;C";;
+        message += $cTempRounded + "&deg;C";;
         $($answer).html(message);
     }
 }
