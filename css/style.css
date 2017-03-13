@@ -19,6 +19,7 @@
 body {
     background: #4b4b4b url("../img/Forest-Fog.jpg") no-repeat center center fixed;
     background-size: cover;
+    color: white;
 }
 
 form {
@@ -45,10 +46,6 @@ button:focus {
 
 
 /*******Class Selectors*******/
-
-.break {
-    line-break: strict;
-}
 
 .radioButtons {
     display: block;
@@ -123,12 +120,17 @@ button:active {
 
 @media only screen and (min-width: 779px) {
     .wrap {
-        height: calc(100vh - 3em);
+        height: calc(100vh - 4em);
+    }
+    header>h2 {
+        font-size: 3em;
+    }
+    header>h4 {
+        font-size: 1.5em;
     }
     footer {
-        height: 3em;
+        height: 1.5em;
         background-color: rgba(204, 204, 204, .3);
-        margin-top: -20px;
     }
 }
 
