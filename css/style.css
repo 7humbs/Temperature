@@ -78,6 +78,7 @@ button:focus {
     border-left: 2px black solid;
     transition: .4s ease-in;
     outline: none;
+    height: 2em;
 }
 
 #answer {
