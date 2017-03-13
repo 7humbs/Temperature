@@ -16,15 +16,9 @@
     box-sizing: border-box;
 }
 
-html {
+body {
     background: #4b4b4b url("../img/Forest-Fog.jpg") no-repeat center center fixed;
     background-size: cover;
-}
-
-html,
-body {
-    margin-top: -10px;
-    color: white;
 }
 
 form {
@@ -127,16 +121,13 @@ button:active {
 }
 
 @media only screen and (min-width: 779px) {
-    .container {
-        top: 30vh;
-    }
     .wrap {
         height: calc(100vh - 3em);
     }
     footer {
         height: 3em;
         background-color: rgba(204, 204, 204, .3);
-        ;
+        margin-top: -20px;
     }
 }
 
